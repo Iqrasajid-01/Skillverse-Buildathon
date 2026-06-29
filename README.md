@@ -1,25 +1,25 @@
-# CoolShift AI - Smart Energy Optimization Platform
+# CoolShift AI
 
-> **Rapid Forge Buildathon | SDG 7 & 13**
-> AI-Powered Cooling Management System for Extreme Heat Conditions
-
----
-
-## 🎯 Overview
-
-**CoolShift AI** is an intelligent energy optimization platform that combines machine learning, constraint-based optimization, and real-time forecasting to minimize electricity costs while maintaining comfort during extreme heat. The system processes 96 daily intervals (15-minute resolution) to generate optimal AC scheduling for households, schools, and commercial buildings.
-
-### Key Metrics
-| Metric | Target |
-|--------|--------|
-| Cost Savings | 35-60% vs Baseline |
-| CO₂ Reduction | 25-45% |
-| Peak Demand Reduction | 20-40% |
-| Solar Utilization | Up to 85% |
+**Intelligent Energy Optimization Platform for Commercial & Residential Cooling Systems**
 
 ---
 
-## 🏗️ System Architecture
+## Overview
+
+CoolShift AI is an enterprise-grade energy management platform that leverages machine learning and mathematical optimization to minimize electricity costs while maintaining optimal indoor comfort conditions. The system processes high-resolution interval data (15-minute intervals) to generate optimal AC scheduling strategies for households, schools, and commercial buildings.
+
+### Key Capabilities
+
+| Capability | Description |
+|------------|-------------|
+| **Cost Optimization** | 35-60% reduction in electricity costs vs baseline |
+| **Demand Management** | 20-40% peak demand reduction |
+| **Carbon Reduction** | 25-45% decrease in CO₂ emissions |
+| **Solar Integration** | Up to 85% solar energy utilization |
+
+---
+
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -34,26 +34,21 @@
 │         ▼                   ▼                   ▼                       │
 │  ┌─────────────────────────────────────────────────────────────┐       │
 │  │                    Core Services Layer                        │       │
-│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐│       │
-│  │  │   Baseline  │ │ Optimization│ │    Solar + Battery      ││       │
-│  │  │   Engine    │ │   Engine     │ │    Management           ││       │
-│  │  └─────────────┘ └─────────────┘ └─────────────────────────┘│       │
-│  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐│       │
-│  │  │   Thermal   │ │  Validation  │ │    Export Service       ││       │
-│  │  │   Model     │ │   Service    │ │    (CSV/Excel)          ││       │
-│  │  └─────────────┘ └─────────────┘ └─────────────────────────┘│       │
+│  │  Baseline Engine │ Optimization Engine │ Solar + Battery      │       │
+│  │  Thermal Model   │ Validation Service  │ Export Service      │       │
 │  └─────────────────────────────────────────────────────────────┘       │
 │                                  │                                       │
 │                                  ▼                                       │
 │  ┌─────────────────────────────────────────────────────────────┐       │
 │  │                    Data Layer                                 │       │
-│  │  PostgreSQL │ JSON Scenarios │ Excel Templates │ SQLite     │       │
+│  │  PostgreSQL │ JSON Scenarios │ Excel Templates               │       │
 │  └─────────────────────────────────────────────────────────────┘       │
 │                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Data Flow
+
 ```
 User Input → Validation → Baseline Calculation → ML Prediction
                                               ↓
@@ -70,97 +65,102 @@ Weather/Tariff Data ──► Optimization Engine ──► Schedule Output
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Backend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **FastAPI** | 0.109.0 | REST API Framework |
-| **Uvicorn** | 0.27.0 | ASGI Server |
-| **Pydantic** | 2.5.3 | Data Validation |
-| **Pandas** | 2.2.0 | Data Processing |
-| **NumPy** | 1.26.3 | Numerical Computing |
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| API Framework | FastAPI 0.109 | REST API |
+| Server | Uvicorn 0.27 | ASGI Server |
+| Validation | Pydantic 2.5 | Data Models |
+| Processing | Pandas 2.2 | Data Handling |
+| Computing | NumPy 1.26 | Numerical Operations |
 
 ### Optimization
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **OR-Tools** | 9.12 | Linear/Integer Programming Solver |
-| **SciPy** | - | Scientific Computing |
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| LP Solver | OR-Tools 9.12 | Linear/Integer Programming |
+| Fallback | Custom | Real-time Heuristics |
 
 ### Machine Learning
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **PyTorch** | 2.0+ | Neural Network Training |
-| **XGBoost** | 2.0+ | Gradient Boosting |
-| **Scikit-learn** | 1.3+ | ML Utilities |
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| Neural Networks | PyTorch 2.0 | Thermal Prediction |
+| Gradient Boosting | XGBoost 2.0 | Solar Forecasting |
+| ML Utilities | Scikit-learn 1.3 | Preprocessing |
 
 ### Data Storage
-| Technology | Purpose |
-|------------|---------|
-| **PostgreSQL** | Primary Database |
-| **SQLite** | Local/Testing |
-| **JSON** | Scenario Data |
-| **Excel** | Import/Export |
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| Primary DB | PostgreSQL | Transactional Data |
+| Cache/Local | SQLite | Testing/Development |
+| File Format | JSON/Excel | Scenarios & Export |
 
 ### Frontend
-| Technology | Purpose |
-|------------|---------|
-| **React** | UI Framework |
-| **Vite** | Build Tool |
-| **Recharts** | Data Visualization |
-| **Axios** | HTTP Client |
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| Framework | React | UI Components |
+| Build Tool | Vite | Development Server |
+| Charts | Recharts | Data Visualization |
+| HTTP Client | Axios | API Communication |
 
 ---
 
-## 🤖 AI/ML Capabilities
+## AI/ML Models
 
-### 1. Solar Generation Forecasting
+### Solar Generation Forecasting
+
 ```
-Input: Weather data (temperature, irradiance, humidity)
-       Historical generation patterns
-       Time-of-day patterns
+Architecture: XGBoost + Random Forest Ensemble
+Input Features:
+  - Weather conditions (temperature, humidity, irradiance)
+  - Historical generation patterns
+  - Time-of-day and seasonal patterns
+  - Cloud cover predictions
 Output: 15-minute ahead solar production forecast
-Model: XGBoost + Random Forest Ensemble
-Accuracy: ~85-90%
+Performance: ~85-90% accuracy
 ```
 
-### 2. Thermal Indoor Prediction (ANN)
+### Indoor Thermal Prediction
+
 ```
-Input: Outdoor temperature
-       AC setpoint
-       Building characteristics
-       Time of day
+Architecture: PyTorch LSTM/GRU Neural Network
+Input Features:
+  - Outdoor ambient temperature
+  - AC setpoint settings
+  - Building thermal characteristics
+  - Historical indoor temperatures
+  - Time-of-day encoding
 Output: Predicted indoor temperature
-Model: PyTorch LSTM/GRU Neural Network
-Error: ±0.5°C typical
+Performance: ±0.5°C typical error
 ```
 
-### 3. Optimization Engine
+### Optimization Engine
+
 ```
-Methods:
-├── OR-Tools Linear Programming (Primary)
-│   └── Minimize: Cost + λ×Discomfort + μ×Emissions
-│   └── Subject to: Hard constraints (battery SOC, capacity)
-│
-└── Rule-Based Fallback
-    └── Priority: Solar > Battery > Grid
-    └── Real-time heuristic evaluation
+Primary: OR-Tools Linear Programming
+  - Objective: Minimize Cost + λ×Discomfort + μ×Emissions
+  - Constraints: Battery SOC, capacity limits, grid availability
+
+Fallback: Rule-Based Heuristic System
+  - Priority: Solar > Battery > Grid
+  - Real-time evaluation of operating conditions
 ```
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 CoolShift/
 │
 ├── backend/
-│   ├── main.py                    # FastAPI application entry
-│   ├── data_models.py             # Pydantic schemas
+│   ├── main.py                    # FastAPI application entry point
+│   ├── data_models.py             # Pydantic data schemas
 │   │
 │   ├── core_engine/
 │   │   ├── data_import.py         # Excel/JSON import service
-│   │   ├── baseline_engine.py      # Current usage calculation
+│   │   ├── baseline_engine.py     # Baseline energy calculation
 │   │   ├── optimization_engine.py  # Rule-based optimizer
 │   │   └── ortools_optimizer.py    # OR-Tools LP solver
 │   │
@@ -169,24 +169,24 @@ CoolShift/
 │   │   │   ├── solar_forecast.py   # XGBoost solar predictor
 │   │   │   ├── thermal_ann.py      # LSTM thermal model
 │   │   │   ├── training_pipeline.py # Training orchestration
-│   │   │   └── train_ml_models.py  # Training script
-│   │   └── ml_optimization_engine.py # ML-enhanced optimizer
+│   │   │   └── train_ml_models.py  # Model training script
+│   │   └── ml_optimization_engine.py # ML-enhanced optimization
 │   │
 │   ├── energy_modules/
 │   │   ├── solar_battery.py       # Solar + battery simulation
 │   │   └── thermal_model.py       # RC thermal model
 │   │
 │   ├── services/
-│   │   ├── validation.py          # I/O validation
+│   │   ├── validation.py          # Input/output validation
 │   │   ├── export_service.py      # CSV/Excel export
 │   │   ├── alerts.py              # Alert generation
 │   │   └── database.py            # PostgreSQL integration
 │   │
-│   ├── auth.py                    # Authentication
+│   ├── auth.py                    # Authentication service
 │   └── requirements.txt           # Python dependencies
 │
 ├── src/
-│   ├── client/                    # React frontend
+│   ├── client/                    # React frontend application
 │   │   ├── src/
 │   │   │   ├── components/
 │   │   │   │   ├── Dashboard.jsx
@@ -197,101 +197,94 @@ CoolShift/
 │   │   │   └── App.jsx
 │   │   └── package.json
 │   │
-│   └── server/                    # Express proxy (optional)
+│   └── server/                    # Express proxy server
 │
-├── data/                         # Scenario data
+├── data/                          # Scenario and output data
 │   ├── scenarios/
 │   └── outputs/
 │
-├── public/                       # Static assets
+├── public/                        # Static assets
 │
-├── package.json                  # Root package config
-├── README.md                     # This file
-└── ARCHITECTURE.md              # Detailed architecture docs
+├── package.json                   # Root package configuration
+└── README.md                     # This file
 ```
 
 ---
 
-## ⚙️ Core Modules
+## Core Modules
 
 ### Baseline Engine
-Calculates current energy consumption without optimization:
-- Reads actual tariff rates (peak/off-peak)
+Calculates current energy consumption without optimization applied:
+- Reads actual utility tariff rates (peak/off-peak periods)
 - Computes interval-by-interval energy costs
-- Generates comparison baseline for savings
+- Generates baseline metrics for comparison
 
 ### Optimization Engine
 Multi-objective optimization with configurable weights:
 ```python
 weights = {
     "cost": 0.35,        # Minimize electricity cost
-    "comfort": 0.30,     # Maintain indoor temperature
+    "comfort": 0.30,     # Maintain indoor temperature range
     "emissions": 0.20,   # Reduce carbon footprint
-    "peak_demand": 0.15  # Shift load away from peaks
+    "peak_demand": 0.15  # Shift load away from peak hours
 }
 ```
 
 ### Solar + Battery Module
-- Simulates solar panel generation
+- Simulates solar panel generation profiles
 - Manages battery charge/discharge cycles
-- Respects SOC bounds and minimum reserves
+- Enforces SOC bounds and minimum reserve requirements
 
 ### Validation Service
-- Ensures grid availability respected
-- Validates battery SOC (0 to capacity)
-- Checks appliance capacity limits
-- Verifies setpoint bounds
+- Grid availability enforcement
+- Battery state-of-charge validation (0 to capacity)
+- Appliance capacity limit checks
+- Temperature setpoint bounds verification
 
 ---
 
-## 📊 Data Specifications
+## Data Specifications
 
 ### Input Scenarios
-| Scenario | Description | Duration | Intervals |
-|----------|-------------|----------|-----------|
-| PUB-A | Household (No Solar) | 30 days | 8,640 |
-| PUB-B | Household (Solar + Battery) | 30 days | 8,640 |
-| PUB-C | School/Small Office | 30 days | 8,640 |
+| Scenario | Description | Duration | Total Intervals |
+|----------|-------------|----------|-----------------|
+| PUB-A | Residential without Solar | 30 days | 8,640 |
+| PUB-B | Residential with Solar + Battery | 30 days | 8,640 |
+| PUB-C | School / Small Commercial | 30 days | 8,640 |
 
 ### Output Windows
-- **Default**: 7 days (672 intervals)
-- **Extended**: 30 days (2,880 intervals)
-- **Custom**: Up to 30 days
+| Type | Duration | Intervals |
+|------|----------|-----------|
+| Standard | 7 days | 672 |
+| Extended | 30 days | 2,880 |
+| Custom | Up to 30 days | Variable |
 
 ---
 
-## 🚀 Quick Start
+## Installation
 
 ### Prerequisites
-```bash
-# Python 3.10+
-python --version
+- Python 3.10+
+- Node.js 18+
+- PostgreSQL 14+ (optional for production)
 
-# Node.js 18+
-node --version
-
-# PostgreSQL (optional, for production)
-```
-
-### Installation
-
-**Backend:**
+### Backend Setup
 ```bash
 cd backend
 pip install -r requirements.txt
 python main.py
 ```
-API: http://localhost:8000
+API available at: http://localhost:8000
 
-**Frontend:**
+### Frontend Setup
 ```bash
 cd src/client
 npm install
 npm run dev
 ```
-Dashboard: http://localhost:3000
+Dashboard available at: http://localhost:3000
 
-### Run Full Stack
+### Development Mode
 ```bash
 # Terminal 1 - Backend
 cd backend && python main.py
@@ -302,77 +295,84 @@ cd src/client && npm run dev
 
 ---
 
-## 📡 API Endpoints
+## API Reference
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/health` | System health check |
+| GET | `/api/health` | System health status |
 | GET | `/api/scenarios` | List available scenarios |
-| POST | `/api/import/excel` | Import Excel data |
-| POST | `/api/run/baseline` | Calculate baseline |
-| POST | `/api/run/optimize` | Run optimization |
-| GET | `/api/results/{run_id}` | Get results |
-| POST | `/api/export/csv` | Export to CSV |
+| POST | `/api/import/excel` | Import Excel workbook |
+| POST | `/api/run/baseline` | Calculate baseline usage |
+| POST | `/api/run/optimize` | Execute optimization |
+| GET | `/api/results/{run_id}` | Retrieve optimization results |
+| POST | `/api/export/csv` | Export results to CSV |
 
 ---
 
-## 📈 Dashboard Features
+## Dashboard
 
-### KPIs
-- **Cost Savings** (PKR)
-- **Energy Reduction** (kWh)
-- **CO₂ Avoided** (kg)
-- **Peak Reduction** (kW)
+### Key Performance Indicators
+- **Cost Savings** - Total electricity cost reduction (PKR)
+- **Energy Reduction** - Cumulative energy savings (kWh)
+- **CO₂ Avoided** - Estimated emissions reduction (kg)
+- **Peak Reduction** - Peak demand decrease (kW)
 
 ### Visualizations
 - Daily Cost Comparison (Bar Chart)
 - Temperature & Resources (Area Chart)
-- 24-Hour Schedule Table
+- 24-Hour Operating Schedule Table
+  - Outdoor/Indoor Temperature
+  - Solar Generation
+  - AC Units Control
+  - Battery State of Charge
+  - Cost per Interval
+  - Comfort Status
+  - Reason Codes
 
 ---
 
-## 🎯 Optimization Modes
+## Optimization Modes
 
-### 1. Cost Priority
-Maximize savings regardless of comfort
+### Cost Priority
+Focus on maximum cost reduction
 ```
-Weights: cost=0.6, comfort=0.1, emissions=0.2, peak=0.1
-```
-
-### 2. Comfort Priority
-Maintain ideal temperature range
-```
-Weights: cost=0.2, comfort=0.5, emissions=0.2, peak=0.1
+cost=0.6, comfort=0.1, emissions=0.2, peak=0.1
 ```
 
-### 3. Eco Mode
-Minimize carbon footprint
+### Comfort Priority
+Maintain ideal temperature conditions
 ```
-Weights: cost=0.2, comfort=0.3, emissions=0.4, peak=0.1
+cost=0.2, comfort=0.5, emissions=0.2, peak=0.1
 ```
 
-### 4. Balanced
-Equal priorities
+### Eco Mode
+Minimize environmental impact
 ```
-Weights: cost=0.25, comfort=0.25, emissions=0.25, peak=0.25
+cost=0.2, comfort=0.3, emissions=0.4, peak=0.1
+```
+
+### Balanced
+Equal emphasis on all objectives
+```
+cost=0.25, comfort=0.25, emissions=0.25, peak=0.25
 ```
 
 ---
 
-## 🔒 Constraints Enforced
+## Constraints
 
 | Constraint | Description |
 |------------|-------------|
-| Grid Availability | Cannot use grid during outages |
-| Battery SOC | 0 ≤ SOC ≤ capacity |
-| Minimum Reserve | SOC ≥ min_reserve_kwh |
-| Appliance Capacity | Units ≤ max_ac_units |
-| Setpoint Bounds | min_setpoint ≤ T ≤ max_setpoint |
-| Energy Balance | Generation = Consumption |
+| Grid Availability | Grid-dependent operation during outages |
+| Battery SOC | 0 ≤ State of Charge ≤ Capacity |
+| Minimum Reserve | SOC ≥ configured minimum reserve |
+| Appliance Capacity | Operating units ≤ maximum capacity |
+| Setpoint Bounds | Temperature within configured range |
+| Energy Balance | Generation equals consumption |
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 cd backend
@@ -381,10 +381,6 @@ python run_tests.py
 
 ---
 
-## 📜 License
+## License
 
 MIT License
-
----
-
-**Built for Rapid Forge Buildathon | SDG 7 & 13**
